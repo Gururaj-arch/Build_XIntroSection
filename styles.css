@@ -1,0 +1,480 @@
+/* ---------------------------------- */
+/* Custom properties                   */
+/* ---------------------------------- */
+:root {
+  --almost-white: hsl(0, 0%, 98%);
+  --medium-gray: hsl(0, 0%, 41%);
+  --almost-black: hsl(0, 0%, 8%);
+  --white: hsl(0, 0%, 100%);
+  --border-gray: hsl(0, 0%, 88%);
+  --shadow: hsla(0, 0%, 8%, 0.08);
+
+  --ff-base: "Epilogue", Arial, Helvetica, sans-serif;
+}
+
+/* ---------------------------------- */
+/* Reset                               */
+/* ---------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--ff-base);
+  color: var(--medium-gray);
+  background-color: var(--white);
+  overflow-x: hidden;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ---------------------------------- */
+/* Overlay (mobile menu backdrop)      */
+/* ---------------------------------- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ---------------------------------- */
+/* Header                              */
+/* ---------------------------------- */
+.header {
+  padding: 1.5rem 1.5rem 0;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-gray);
+  position: relative;
+}
+
+.logo {
+  height: 24px;
+  width: auto;
+}
+
+/* Mobile menu toggle buttons */
+.open-menu,
+.close-menu {
+  z-index: 30;
+}
+
+button.close-menu {
+  display: none;
+  position: absolute;
+  top: 2rem;
+  right: 1.5rem;
+}
+
+/* ---------------------------------- */
+/* Nav (mobile: off-canvas panel)      */
+/* ---------------------------------- */
+.nav {
+  position: fixed;
+  top: 5.5rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2rem 4rem var(--shadow);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-1rem);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  z-index: 20;
+}
+
+.nav.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-link {
+  border-bottom: 1px solid var(--border-gray);
+}
+
+.nav-link:last-child {
+  border-bottom: none;
+}
+
+.nav-link > a {
+  display: block;
+  padding: 1rem 0;
+  color: var(--almost-black);
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.nav-link > a:hover,
+.nav-link > a:focus-visible {
+  color: var(--almost-black);
+  opacity: 0.6;
+}
+
+.dropdown-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 1rem 0;
+  color: var(--almost-black);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.dropdown-btn .arrow {
+  transition: transform 0.2s ease;
+}
+
+.nav-link.active .dropdown-btn .arrow {
+  transform: rotate(180deg);
+}
+
+.dropdown-btn:hover,
+.dropdown-btn:focus-visible {
+  opacity: 0.6;
+}
+
+/* Dropdown list: hidden until toggled via JS click (not hover) */
+.dropdown-list {
+  display: none;
+  overflow: hidden;
+}
+
+.nav-link.active .dropdown-list {
+  display: block;
+}
+
+.dropdown-list ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.5rem 0 1rem;
+}
+
+.dropdown-link a {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--medium-gray);
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.dropdown-link a:hover,
+.dropdown-link a:focus-visible {
+  color: var(--almost-black);
+}
+
+.registration {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-gray);
+}
+
+.registration button {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.registration .login {
+  color: var(--medium-gray);
+  transition: color 0.2s ease;
+}
+
+.registration .login:hover,
+.registration .login:focus-visible {
+  color: var(--almost-black);
+}
+
+.registration .register {
+  color: var(--almost-black);
+  border: 1px solid var(--border-gray);
+  border-radius: 7px;
+  padding: 0.75rem 1.5rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.registration .register:hover,
+.registration .register:focus-visible {
+  background-color: var(--almost-black);
+  color: var(--white);
+  border-color: var(--almost-black);
+}
+
+/* ---------------------------------- */
+/* Hero                                */
+/* ---------------------------------- */
+main {
+  padding: 2.5rem 1.5rem 0;
+}
+
+.hero {
+  text-align: center;
+}
+
+.hero picture,
+.hero img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.text-content {
+  margin-top: 2.5rem;
+}
+
+.text-content h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--almost-black);
+  line-height: 1.15;
+  margin: 0 0 1rem;
+  letter-spacing: -0.5px;
+}
+
+.text-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 auto 1.75rem;
+  max-width: 32rem;
+}
+
+.learn-more {
+  background-color: var(--almost-black);
+  color: var(--white);
+  font-weight: 600;
+  padding: 0.85rem 1.75rem;
+  border-radius: 7px;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.learn-more:hover,
+.learn-more:focus-visible {
+  background-color: hsl(0, 0%, 25%);
+}
+
+.clients {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem 2.5rem;
+  margin: 3.5rem 0 3rem;
+}
+
+.clients img {
+  height: 1.25rem;
+  width: auto;
+}
+
+/* ---------------------------------- */
+/* Footer                              */
+/* ---------------------------------- */
+.attribution {
+  text-align: center;
+  font-size: 0.8rem;
+  padding: 1.5rem;
+  color: var(--medium-gray);
+}
+
+.attribution a {
+  color: var(--almost-black);
+  font-weight: 600;
+}
+
+.attribution a:hover,
+.attribution a:focus-visible {
+  text-decoration: underline;
+}
+
+/* ---------------------------------- */
+/* Desktop                             */
+/* ---------------------------------- */
+@media (min-width: 768px) {
+  .overlay {
+    display: none;
+  }
+
+  .header {
+    padding: 2rem 3rem 0;
+  }
+
+  .header-content {
+    padding-bottom: 2rem;
+    border-bottom: none;
+    gap: 2.5rem;
+  }
+
+  .open-menu,
+  .close-menu {
+    display: none !important;
+  }
+
+  .nav {
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    background: none;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-link {
+    border-bottom: none;
+    position: relative;
+  }
+
+  .nav-link > a {
+    padding: 0;
+    font-weight: 400;
+    color: var(--medium-gray);
+  }
+
+  .nav-link > a:hover,
+  .nav-link > a:focus-visible {
+    color: var(--almost-black);
+    opacity: 1;
+  }
+
+  .dropdown-btn {
+    width: auto;
+    padding: 0;
+    font-weight: 400;
+    color: var(--medium-gray);
+  }
+
+  .dropdown-btn:hover,
+  .dropdown-btn:focus-visible {
+    color: var(--almost-black);
+    opacity: 1;
+  }
+
+  /* Desktop dropdown floats below the trigger */
+  .dropdown-list {
+    position: absolute;
+    top: calc(100% + 1.75rem);
+    left: -1.5rem;
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2rem 4rem var(--shadow);
+    padding: 1.5rem;
+    min-width: 200px;
+  }
+
+  .dropdown-list ul {
+    gap: 1rem;
+    padding: 0;
+  }
+
+  .registration {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+
+  .registration .register {
+    padding: 0.6rem 1.5rem;
+  }
+
+  main {
+    padding: 4rem 3rem 0;
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 4rem;
+    text-align: left;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero picture,
+  .hero > picture > img {
+    flex: 1;
+  }
+
+  .text-content {
+    flex: 1;
+    margin-top: 0;
+  }
+
+  .text-content h1 {
+    font-size: 3.25rem;
+  }
+
+  .text-content p {
+    margin: 0 0 2rem;
+    max-width: 28rem;
+  }
+
+  .clients {
+    max-width: 1200px;
+    margin: 6rem auto 4rem;
+    justify-content: space-between;
+  }
+}
