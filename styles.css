@@ -62,12 +62,7 @@ a {
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease;
-  z-index: 10;
-}
-
-.overlay.active {
-  opacity: 1;
-  visibility: visible;
+  z-index: 999;   /* Increased for proper layering */
 }
 
 /* ---------------------------------- */
@@ -75,6 +70,7 @@ a {
 /* ---------------------------------- */
 .header {
   padding: 1.5rem 1.5rem 0;
+  z-index: 5;   /* Added for stacking context */
 }
 
 .header-content {
@@ -83,25 +79,14 @@ a {
   justify-content: space-between;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid var(--border-gray);
-  position: relative;
-}
-
-.logo {
-  height: 24px;
-  width: auto;
+  /* position: relative removed to prevent stacking context issues with fixed overlay/nav */
+  z-index: 1;
 }
 
 /* Mobile menu toggle buttons */
 .open-menu,
 .close-menu {
-  z-index: 30;
-}
-
-button.close-menu {
-  display: none;
-  position: absolute;
-  top: 2rem;
-  right: 1.5rem;
+  z-index: 1001;   /* Highest */
 }
 
 /* ---------------------------------- */
@@ -120,7 +105,7 @@ button.close-menu {
   visibility: hidden;
   transform: translateY(-1rem);
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
-  z-index: 20;
+  z-index: 1000;   /* Above overlay */
 }
 
 .nav.active {
@@ -345,6 +330,7 @@ main {
 
   .header {
     padding: 2rem 3rem 0;
+    z-index: 5;
   }
 
   .header-content {
