@@ -1,134 +1,117 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Snap | Intro Section With Dropdown Navigation</title>
-  <link rel="stylesheet" href="./css/styles.css" />
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Snap | Intro Section With Dropdown Navigation</title>
+<link href="./css/styles.css" rel="stylesheet"/>
 </head>
 <body>
-
-  <div class="overlay"></div>
-
-  <header class="header">
-    <div class="header-content">
-      <img src="./assets/images/logo.svg" alt="snap's logo" class="logo" />
-
-      <nav class="nav">
-        <ul class="nav-list">
-          <li class="nav-link">
-            <button class="dropdown-btn" type="button" aria-expanded="false">
+<div class="overlay"></div>
+<header class="header">
+<div class="header-content">
+<img alt="snap's logo" class="logo" src="./assets/images/logo.svg"/>
+<nav class="nav">
+<ul class="nav-list">
+<li class="nav-link">
+<button aria-expanded="false" class="dropdown-btn" type="button">
               Features
-              <img src="./assets/images/icon-arrow-down.svg" alt="" class="arrow" />
-            </button>
-            <div class="dropdown-list">
-              <ul>
-                <li class="dropdown-link">
-                  <a href="#" aria-label="todo-list">
-                    <img src="./assets/images/icon-todo.svg" alt="" />
+              <img alt="" class="arrow" src="./assets/images/icon-arrow-down.svg"/>
+</button>
+<div class="dropdown-list">
+<ul>
+<li class="dropdown-link">
+<a aria-label="todo-list" href="#">
+<img alt="" src="./assets/images/icon-todo.svg"/>
                     Todo List
                   </a>
-                </li>
-                <li class="dropdown-link">
-                  <a href="#">
-                    <img src="./assets/images/icon-calendar.svg" alt="" />
+</li>
+<li class="dropdown-link">
+<a href="#">
+<img alt="" src="./assets/images/icon-calendar.svg"/>
                     Calendar
                   </a>
-                </li>
-                <li class="dropdown-link">
-                  <a href="#">
-                    <img src="./assets/images/icon-reminders.svg" alt="" />
+</li>
+<li class="dropdown-link">
+<a href="#">
+<img alt="" src="./assets/images/icon-reminders.svg"/>
                     Reminders
                   </a>
-                </li>
-                <li class="dropdown-link">
-                  <a href="#">
-                    <img src="./assets/images/icon-planning.svg" alt="" />
+</li>
+<li class="dropdown-link">
+<a href="#">
+<img alt="" src="./assets/images/icon-planning.svg"/>
                     Planning
                   </a>
-                </li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="nav-link">
-            <button class="dropdown-btn" type="button" aria-expanded="false">
+</li>
+</ul>
+</div>
+</li>
+<li class="nav-link">
+<button aria-expanded="false" class="dropdown-btn" type="button">
               Company
-              <img src="./assets/images/icon-arrow-down.svg" alt="" class="arrow" />
-            </button>
-            <div class="dropdown-list">
-              <ul>
-                <li class="dropdown-link">
-                  <a href="#">
-                    <img src="./assets/images/icon-history.svg" alt="" />
+              <img alt="" class="arrow" src="./assets/images/icon-arrow-down.svg"/>
+</button>
+<div class="dropdown-list">
+<ul>
+<li class="dropdown-link">
+<a href="#">
+<img alt="" src="./assets/images/icon-history.svg"/>
                     History
                   </a>
-                </li>
-                <li class="dropdown-link">
-                  <a href="#">
-                    <img src="./assets/images/icon-our-team.svg" alt="" />
+</li>
+<li class="dropdown-link">
+<a href="#">
+<img alt="" src="./assets/images/icon-our-team.svg"/>
                     Our Team
                   </a>
-                </li>
-                <li class="dropdown-link">
-                  <a href="#">
-                    <img src="./assets/images/icon-careers.svg" alt="" />
+</li>
+<li class="dropdown-link">
+<a href="#">
+<img alt="" src="./assets/images/icon-careers.svg"/>
                     Careers
                   </a>
-                </li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="nav-link"><a href="#">Careers</a></li>
-          <li class="nav-link"><a href="#">About</a></li>
-        </ul>
-
-        <div class="registration">
-          <button type="button" class="login">Login</button>
-          <button type="button" class="register">Register</button>
-        </div>
-      </nav>
-
-      <button type="button" class="open-menu" aria-label="Open menu">
-        <img src="./assets/images/icon-menu.svg" alt="" class="open-menu" />
-      </button>
-      <button type="button" class="close-menu" aria-label="Close menu">
-        <img src="./assets/images/icon-close-menu.svg" alt="" class="close-menu" />
-      </button>
-    </div>
-  </header>
-
-  <main>
-    <div class="hero">
-      <picture>
-        <source media="(min-width: 768px)" srcset="./assets/images/image-hero-desktop.png" />
-        <img src="./assets/images/image-hero-mobile.png" alt="Team members collaborating and syncing tasks together" />
-      </picture>
-
-      <div class="text-content">
-        <h1>Make remote work</h1>
-        <p>
-          Get your team in sync, no matter your location. Streamline processes,
-          create team rituals, and watch productivity soar.
-        </p>
-        <button type="button" class="learn-more">Learn more</button>
-      </div>
-    </div>
-
-    <div class="clients">
-      <img src="./assets/images/client-databiz.svg" alt="Databiz" />
-      <img src="./assets/images/client-audiophile.svg" alt="Audiophile" />
-      <img src="./assets/images/client-meet.svg" alt="Meet" />
-      <img src="./assets/images/client-maker.svg" alt="Maker" />
-    </div>
-  </main>
-
-  <footer class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-    Coded by <a href="https://crio.do" target="_blank">Crio</a>.
-  </footer>
-
-  <script src="./js/script.js"></script>
+</li>
+</ul>
+</div>
+</li>
+<li class="nav-link"><a href="#">Careers</a></li>
+<li class="nav-link"><a href="#">About</a></li>
+</ul>
+<div class="registration">
+<button class="login" type="button">Login</button>
+<button class="register" type="button">Register</button>
+</div>
+</nav>
+<button aria-label="Open menu" class="open-menu" type="button">
+<img alt="" src="./assets/images/icon-menu.svg"/>
+</button>
+<button aria-label="Close menu" class="close-menu" type="button">
+<img alt="" src="./assets/images/icon-close-menu.svg"/>
+</button>
+</div>
+</header>
+<main>
+<div class="hero">
+<picture>
+<source media="(min-width: 768px)" srcset="./assets/images/image-hero-desktop.png"/>
+<img alt="Team members collaborating and syncing tasks together" src="./assets/images/image-hero-mobile.png"/>
+</picture>
+<div class="text-content">
+<h1>Make remote work</h1>
+<p>Get your team in sync, no matter your location. Streamline processes, create team rituals, and watch productivity soar.</p>
+<button class="learn-more" type="button">Learn more</button>
+</div>
+</div>
+<div class="clients">
+<img alt="Databiz" src="./assets/images/client-databiz.svg"/>
+<img alt="Audiophile" src="./assets/images/client-audiophile.svg"/>
+<img alt="Meet" src="./assets/images/client-meet.svg"/>
+<img alt="Maker" src="./assets/images/client-maker.svg"/>
+</div>
+</main>
+<footer class="attribution">Challenge by <a href="https://crio.do" target="_blank">Crio</a>.</footer>
+<script src="./js/script.js"></script>
 </body>
 </html>

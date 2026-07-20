@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     closeMenuBtn.style.display = "none";
 
     // Also collapse any open dropdowns when the menu closes
-    navLinks.forEach((link) => link.classList.remove("active"));
+    navLinks.forEach((link) => link.classList.remove("link-open"));
   };
 
   openMenuBtn.addEventListener("click", openMenu);
@@ -32,14 +32,14 @@ document.addEventListener("DOMContentLoaded", () => {
   dropdownBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
       const parentLink = btn.closest(".nav-link");
-      const isActive = parentLink.classList.contains("active");
+      const isActive = parentLink.classList.contains("link-open");
 
       // Close any other open dropdowns first
       navLinks.forEach((link) => {
-        if (link !== parentLink) link.classList.remove("active");
+        if (link !== parentLink) link.classList.remove("link-open");
       });
 
-      parentLink.classList.toggle("active", !isActive);
+      parentLink.classList.toggle("link-open", !isActive);
       btn.setAttribute("aria-expanded", String(!isActive));
     });
   });
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Close dropdowns when clicking outside of them (desktop)
   document.addEventListener("click", (e) => {
     if (!e.target.closest(".nav-link")) {
-      navLinks.forEach((link) => link.classList.remove("active"));
+      navLinks.forEach((link) => link.classList.remove("link-open"));
       dropdownBtns.forEach((btn) => btn.setAttribute("aria-expanded", "false"));
     }
   });

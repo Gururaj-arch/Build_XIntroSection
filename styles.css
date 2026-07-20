@@ -171,7 +171,7 @@ button.close-menu {
   transition: transform 0.2s ease;
 }
 
-.nav-link.active .dropdown-btn .arrow {
+.nav-link.link-open .dropdown-btn .arrow {
   transform: rotate(180deg);
 }
 
@@ -186,7 +186,7 @@ button.close-menu {
   overflow: hidden;
 }
 
-.nav-link.active .dropdown-list {
+.nav-link.link-open .dropdown-list {
   display: block;
 }
 
