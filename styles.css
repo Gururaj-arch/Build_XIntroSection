@@ -55,19 +55,22 @@ a {
 /* ---------------------------------- */
 /* Overlay (mobile menu backdrop)      */
 /* ---------------------------------- */
-.overlay {
-  position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease;
-  z-index: 10;
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,.5);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 100;
+    transition: .3s;
 }
 
-.overlay.active {
-  opacity: 1;
-  visibility: visible;
+.overlay.active{
+    opacity: 1;
+    visibility: visible;
 }
 
 /* ---------------------------------- */
@@ -171,7 +174,7 @@ button.close-menu {
   transition: transform 0.2s ease;
 }
 
-.nav-link.link-open .dropdown-btn .arrow {
+.nav-link.link-open > .dropdown-btn .arrow {
   transform: rotate(180deg);
 }
 
@@ -179,17 +182,18 @@ button.close-menu {
 .dropdown-btn:focus-visible {
   opacity: 0.6;
 }
-
+.nav-link.link-open {
+  position: relative;
+}
 /* Dropdown list: hidden until toggled via JS click (not hover) */
 .dropdown-list {
   display: none;
   overflow: hidden;
 }
 
-.nav-link.link-open .dropdown-list {
+.nav-link.link-open > .dropdown-list {
   display: block;
 }
-
 .dropdown-list ul {
   display: flex;
   flex-direction: column;

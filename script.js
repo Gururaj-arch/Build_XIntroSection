@@ -4,62 +4,113 @@ document.addEventListener("DOMContentLoaded", () => {
   const nav = document.querySelector(".nav");
   const overlay = document.querySelector(".overlay");
   const navLinks = document.querySelectorAll(".nav-link");
-  const dropdownBtns = document.querySelectorAll(".dropdown-btn");
 
-  // ---- Mobile menu open/close ----
-  const openMenu = () => {
+  // -------------------------
+  // Mobile Menu
+  // -------------------------
+
+  function openMenu() {
     nav.classList.add("active");
     overlay.classList.add("active");
+
     openMenuBtn.style.display = "none";
     closeMenuBtn.style.display = "block";
-  };
+  }
 
-  const closeMenu = () => {
+  function closeMenu() {
     nav.classList.remove("active");
     overlay.classList.remove("active");
+
     openMenuBtn.style.display = "block";
     closeMenuBtn.style.display = "none";
 
-    // Also collapse any open dropdowns when the menu closes
-    navLinks.forEach((link) => link.classList.remove("link-open"));
-  };
+    navLinks.forEach(link => {
+      link.classList.remove("link-open");
+
+      const btn = link.querySelector(".dropdown-btn");
+      if (btn) {
+        btn.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
 
   openMenuBtn.addEventListener("click", openMenu);
   closeMenuBtn.addEventListener("click", closeMenu);
   overlay.addEventListener("click", closeMenu);
 
-  // ---- Dropdown toggle (click only, not hover) ----
-  dropdownBtns.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const parentLink = btn.closest(".nav-link");
-      const isActive = parentLink.classList.contains("link-open");
+  // -------------------------
+  // Dropdown
+  // -------------------------
 
-      // Close any other open dropdowns first
-      navLinks.forEach((link) => {
-        if (link !== parentLink) link.classList.remove("link-open");
+  navLinks.forEach(link => {
+
+    const btn = link.querySelector(".dropdown-btn");
+
+    if (!btn) return;
+
+    btn.addEventListener("click", function (e) {
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      const isOpen = link.classList.contains("link-open");
+
+      navLinks.forEach(item => {
+        if (item !== link) {
+          item.classList.remove("link-open");
+
+          const b = item.querySelector(".dropdown-btn");
+          if (b) {
+            b.setAttribute("aria-expanded", "false");
+          }
+        }
       });
 
-      parentLink.classList.toggle("link-open", !isActive);
-      btn.setAttribute("aria-expanded", String(!isActive));
+      if (isOpen) {
+        link.classList.remove("link-open");
+        btn.setAttribute("aria-expanded", "false");
+      } else {
+        link.classList.add("link-open");
+        btn.setAttribute("aria-expanded", "true");
+      }
+
     });
+
   });
 
-  // Close dropdowns when clicking outside of them (desktop)
-  document.addEventListener("click", (e) => {
-    if (!e.target.closest(".nav-link")) {
-      navLinks.forEach((link) => link.classList.remove("link-open"));
-      dropdownBtns.forEach((btn) => btn.setAttribute("aria-expanded", "false"));
-    }
+  // -------------------------
+  // Click Outside
+  // -------------------------
+
+  document.addEventListener("click", function (e) {
+
+    if (e.target.closest(".nav-link")) return;
+
+    navLinks.forEach(link => {
+      link.classList.remove("link-open");
+
+      const btn = link.querySelector(".dropdown-btn");
+      if (btn) {
+        btn.setAttribute("aria-expanded", "false");
+      }
+    });
+
   });
 
-  // Reset mobile menu state on resize to desktop
-  const desktopMediaQuery = window.matchMedia("(min-width: 768px)");
-  desktopMediaQuery.addEventListener("change", (e) => {
-    if (e.matches) {
+  // -------------------------
+  // Desktop Resize
+  // -------------------------
+
+  window.addEventListener("resize", () => {
+
+    if (window.innerWidth >= 768) {
       nav.classList.remove("active");
       overlay.classList.remove("active");
+
       openMenuBtn.style.display = "";
       closeMenuBtn.style.display = "";
     }
+
   });
+
 });
