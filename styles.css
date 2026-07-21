@@ -121,6 +121,7 @@ button.close-menu {
   transform: translateY(-1rem);
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
   z-index: 20;
+  pointer-events: none;
 }
 
 .nav.active {
