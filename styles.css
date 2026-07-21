@@ -137,6 +137,7 @@ button.close-menu {
 
 .nav-link {
   border-bottom: 1px solid var(--border-gray);
+  pointer-events: auto;
 }
 
 .nav-link:last-child {
